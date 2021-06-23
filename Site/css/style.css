@@ -1,0 +1,18 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root{
+  font-size: 100%;
+}
+
+.menu{
+  height: 4.5rem;
+  background-color: red;
+}
+
+html, body{
+
+}
