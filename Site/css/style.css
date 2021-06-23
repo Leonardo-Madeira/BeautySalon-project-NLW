@@ -9,7 +9,7 @@ a{
 
 }
 img{
-  width: 100%;
+  max-width: 100%;
   height: auto;
 }
 
@@ -17,22 +17,28 @@ img{
 :root{
   font-size: 100%;
 }
+/*=======================Base======================*/
+body{
+  font: 400 "DM sans", sans-serif;
+}
+h1{
+  font: 700 1.875rem "Poppins", sans-serif;
+}
 /*=======================Container======================*/
-.menu{
-  height: 4.5rem;
-
+.container{ /*Center*/
+  width: 90%;
+  margin: 0 auto;
+}
+.header{
+  height: 4.5rem; 
   background-color: red;
 }
 nav{
   display: flex;
   justify-content: space-between;
-
-  
 }
-/*=======================RESET======================*/
-html, body{
 
-}
+
 /*=======================RESET======================*/
 /*=======================RESET======================*/
 /*=======================RESET======================*/
