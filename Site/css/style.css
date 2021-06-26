@@ -1,46 +1,249 @@
-/*=======================RESET======================*/
-*{
+/*================RESET==================*/
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-a{
-  text-decoration: none;
 
+ul {
+  list-style: none;
 }
-img{
-  max-width: 100%;
+
+a {
+  text-decoration: none;
+}
+img {
+  width: 100%; /*Prefiro max-width: 100%;*/
   height: auto;
 }
+/*===================Variables====================*/
+:root {
+  --hue: 159;
+  /* HSL Color mode*/
+  --base-color: hsl(var(--hue) 36% 57%);
+  --base-color-second: hsl(var(--hue) 65% 88%);
+  --base-color-alt: hsl(var(--hue) 57% 53%);
+  --title-color: hsl(var(--hue) 41% 10%);
+  --text-color: hsl(0 0% 46%);
+  --text-color-light: hsl(0 0% 98%);
+  --body-color: hsl(0 0% 98%);
+}
 
-/*=======================?======================*/
-:root{
-  font-size: 100%;
+/*==================Base=================*/
+body {
+  font: 400 1rem 'DM Sans', sans-serif;
+  color: var(--text-color);
+  background: var(--body-color);
+  -webkit-font-smoothing: antialiased; /*estudar isso aqui*/
 }
-/*=======================Base======================*/
-body{
-  font: 400 "DM sans", sans-serif;
+
+.title {
+  font: 700 1.875rem 'Poppins', sans-serif;
+  color: var(--title-color);
+  -webkit-font-smoothing: auto; /*estudar isso aqui*/
 }
-h1{
-  font: 700 1.875rem "Poppins", sans-serif;
+
+button {
+  background-color: var(--base-color);
+  color: var(--text-color-light);
+  height: 3.5rem;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 2rem;
+  border-radius: 0.25rem;
+  font: 500 1rem 'DM Sans', sans-serif;
+  transition: background 0.2s;
+  border: 0; /*Remover a bordar*/
+  cursor: pointer;
 }
-/*=======================Container======================*/
-.container{ /*Center*/
-  width: 90%;
-  margin: 0 auto;
+
+button:hover {
+  background-color: var(--base-color-alt);
 }
-.header{
-  height: 4.5rem; 
-  background-color: red;
+
+.divider-1 {
+  /*Divide a cor em duas*/
+  height: 1px;
+  background: linear-gradient(
+    270deg,
+    hsla(var(--hue), 36%, 57%, 1) 0%,
+    hsla(var(--hue), 65%, 88%, 0.34) 100%
+  );
 }
-nav{
+
+/*====================Layout===================*/
+
+.container {
+  /*Center*/
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+  /* OU 
+   margin: 0 auto;*/
+}
+
+.grid {
+  display: grid; /*Grid habilita novas funcionalidades no CSS*/
+  gap: 2rem; /*expaçamento entre todos os elementos de 2rem = */
+}
+
+.section {
+  padding: 5rem 0; /*Poderia modificar cima e baixo com margem ou padding. Nesse caso é 5rem que significa 80/16 = 5*/
+}
+
+#header {
+  border-bottom: 1px solid #e4e4e4;
+  margin-bottom: 2rem;
   display: flex;
-  justify-content: space-between;
+
+  /*Deixar o menu fixed*/
+  width: 100%;
+  position: fixed;
+  top: 0; /*Top e left deixa o menu sempre no TOPO*/
+  left: 0;
+  z-index: 100;
+  background-color: var(--body-color);
+  /*Fim menu fixed*/
 }
 
+/*====================Navegation===================*/
 
-/*=======================RESET======================*/
-/*=======================RESET======================*/
+nav {
+  width: 100%;
+  height: 4.5rem;
+  display: flex; /*Joga todos itens alinhados*/
+  align-items: center; /*Centraliza os itens no centro da caixa de 75px(4.5rem)
+  align-items: flex-end // Joga tudo para baixo
+  align-items: flex-start; // Padrao, deixa tudo em cima*/
+  justify-content: space-between; /*Deixa o ultimo item alinhado justificado*/
+}
+
+nav ul.grid {
+  gap: 4rem;
+}
+
+nav ul li {
+  text-align: center;
+  position: relative;
+}
+
+nav ul li a {
+  transition: 0.3s;
+}
+
+nav ul li a:hover {
+  color: var(--base-color);
+}
+
+nav ul li a::after {
+  content: '';
+  width: 0%;
+  height: 2px;
+  background: var(--base-color);
+
+  position: absolute;
+  left: 0;
+  bottom: -1.5rem;
+
+  transition: width 0.2s;
+}
+
+nav ul li a:hover::after {
+  width: 100%;
+}
+
+/*EFEITO CLICK MENU*/
+nav .menu {
+  opacity: 0; /*Removendo a opacidade*/
+  visibility: hidden; /*Tirando a visao do menu*/
+}
+
+/*Mostrar Menu*/
+nav.show .menu {
+  /*Se for clicado*/
+  opacity: 1; /*Aparece de volta o menu*/
+  visibility: visible; /*Deixa visivel*/
+
+  background: var(--body-color); /*backColor padrao*/
+
+  height: 100vh; /*VH pega todo eixo h da tela*/
+  width: 100vw; /*VW eixo x da tela(width)*/
+  position: fixed; /*Posição fixa*/
+  top: 0; /*Deixa o menu totalmente no eixo ode cima*/
+  left: 0; /*E mesma coisa aqui*/
+}
+
+nav.show .menu {
+  display: grid;
+  place-content: center;
+}
+/*====================Logo===================*/
+.logo {
+  color: var(--title-color);
+  font: 700 1.31rem 'Poppins', sans-serif; /*21 pixel de font-size 21 /dividido por 16(valor padrao) / 21/16 = 1.31*/
+}
+.logo span {
+  color: var(--base-color);
+}
+
+.menu {
+  display: flex;
+}
+
+main {
+  margin-top: 4.5rem;
+}
+
+/*=======================HOME======================*/
+#home {
+  overflow: hidden;
+}
+#home .container {
+  margin: 0; /*Zerando a margem da imagem, para ficar colada na borda */
+}
+
+#home .imagem {
+  position: relative; /*Deixando a imagem pai em posicionamento relativo*/
+}
+
+#home .image::before {
+  /*Elemento fantasma*/
+  content: '';
+  height: 100%;
+  max-height: 280px;
+  width: 100%;
+  max-width: 400px;
+  background-color: var(--base-color-second);
+  position: absolute;
+  top: 12%;
+  left: 16.7%;
+  z-index: 0;
+  /*ANALISAR TUDO ISSO AQUI(2:06:03)*/
+}
+
+#home .image img {
+  position: relative;
+  right: 2.93rem;
+}
+
+#home .image img,
+#home .image::before {
+  border-radius: 0.25rem;
+}
+
+#home .text {
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+  text-align: center;
+}
+#home .text h1 {
+  margin-bottom: 1rem;
+}
+#home .text p {
+  margin-bottom: 2rem;
+  max-width: 100%;
+}
+
+/*===================Container===================*/
 /*=======================RESET======================*/
 /*=======================RESET======================*/
 /*=======================RESET======================*/
