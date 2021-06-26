@@ -91,3 +91,93 @@ button:hover {
 .section {
   padding: 5rem 0; /*Poderia modificar cima e baixo com margem ou padding. Nesse caso é 5rem que significa 80/16 = 5*/
 }
+#header {
+
+  border-bottom: 1px solid #e4e4e4;
+  margin-bottom: 2rem;
+  display: flex;
+
+  /*Deixar o menu fixed*/
+  width: 100%;
+  position: fixed;
+  top: 0; /*Top e left deixa o menu sempre no TOPO*/
+  left: 0;
+  z-index: 100;
+  background-color: var(--body-color);
+  /*Fim menu fixed*/
+
+}
+
+/*====================Navegation===================*/
+
+nav {
+  width: 100%;
+  height: 4.5rem;
+  display: flex; /*Joga todos itens alinhados*/
+  align-items: center; /*Centraliza os itens no centro da caixa de 75px(4.5rem)
+  align-items: flex-end // Joga tudo para baixo
+  align-items: flex-start; // Padrao, deixa tudo em cima*/
+  justify-content: space-between; /*Deixa o ultimo item alinhado justificado*/
+}
+
+nav ul.grid {
+  gap: 4rem;
+}
+
+nav ul li {
+  text-align: center;
+  position: relative;
+}
+
+nav ul li a {
+  transition: 0.3s;
+}
+
+nav ul li a:hover {
+  color: var(--base-color);
+}
+
+nav ul li a::after {
+  content: '';
+  width: 0%;
+  height: 2px;
+  background: var(--base-color);
+
+  position: absolute;
+  left: 0;
+  bottom: -1.5rem;
+
+  transition: width 0.2s;
+}
+
+nav ul li a:hover::after {
+  width: 100%;
+}
+
+/*EFEITO CLICK MENU*/
+nav .menu {
+  opacity: 0; /*Removendo a opacidade*/
+  visibility: hidden; /*Tirando a visao do menu*/
+}
+
+/*Mostrar Menu*/
+nav.show .menu {
+
+  /*Se for clicado*/
+  opacity: 1; /*Aparece de volta o menu*/
+  visibility: visible; /*Deixa visivel*/
+
+  background: var(--body-color); /*backColor padrao*/
+
+  height: 100vh; /*VH pega todo eixo h da tela*/
+  width: 100vw; /*VW eixo x da tela(width)*/
+  position: fixed; /*Posição fixa*/
+  top: 0; /*Deixa o menu totalmente no eixo ode cima*/
+  left: 0; /*E mesma coisa aqui*/
+
+}
+
+nav.show .menu {
+  display: grid;
+  place-content: center;
+}
