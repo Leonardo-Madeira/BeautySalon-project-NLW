@@ -1,46 +1,93 @@
-/*=======================RESET======================*/
-*{
+/*================RESET==================*/
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-a{
-  text-decoration: none;
 
+ul {
+  list-style: none;
 }
-img{
-  max-width: 100%;
+
+a {
+  text-decoration: none;
+}
+img {
+  width: 100%; /*Prefiro max-width: 100%;*/
   height: auto;
 }
+/*===================Variables====================*/
+:root {
 
-/*=======================?======================*/
-:root{
-  font-size: 100%;
-}
-/*=======================Base======================*/
-body{
-  font: 400 "DM sans", sans-serif;
-}
-h1{
-  font: 700 1.875rem "Poppins", sans-serif;
-}
-/*=======================Container======================*/
-.container{ /*Center*/
-  width: 90%;
-  margin: 0 auto;
-}
-.header{
-  height: 4.5rem; 
-  background-color: red;
-}
-nav{
-  display: flex;
-  justify-content: space-between;
+  --hue: 159;
+  /* HSL Color mode*/
+  --base-color: hsl(var(--hue) 36% 57%);
+  --base-color-second: hsl(var(--hue) 65% 88%);
+  --base-color-alt: hsl(var(--hue) 57% 53%);
+  --title-color: hsl(var(--hue) 41% 10%);
+  --text-color: hsl(0 0% 46%);
+  --text-color-light: hsl(0 0% 98%);
+  --body-color: hsl(0 0% 98%);
 }
 
+/*==================Base=================*/
+body {
 
-/*=======================RESET======================*/
-/*=======================RESET======================*/
-/*=======================RESET======================*/
-/*=======================RESET======================*/
-/*=======================RESET======================*/
+  font: 400 1rem 'DM Sans', sans-serif;
+  color: var(--text-color);
+  background: var(--body-color);
+  -webkit-font-smoothing: antialiased; /*estudar isso aqui*/
+}
+
+.title {
+  font: 700 1.875rem 'Poppins', sans-serif;
+  color: var(--title-color);
+  -webkit-font-smoothing: auto; /*estudar isso aqui*/
+}
+
+button {
+  background-color: var(--base-color);
+  color: var(--text-color-light);
+  height: 3.5rem;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 2rem;
+  border-radius: 0.25rem;
+  font: 500 1rem 'DM Sans', sans-serif;
+  transition: background 0.2s;
+  border: 0; /*Remover a bordar*/
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: var(--base-color-alt);
+}
+
+.divider-1 {
+  /*Divide a cor em duas*/
+  height: 1px;
+  background: linear-gradient(
+    270deg,
+    hsla(var(--hue), 36%, 57%, 1) 0%,
+    hsla(var(--hue), 65%, 88%, 0.34) 100%
+  );
+}
+
+/*====================Layout===================*/
+
+.container {
+  /*Center*/
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+  /* OU 
+   margin: 0 auto;*/
+}
+
+.grid {
+  display: grid; /*Grid habilita novas funcionalidades no CSS*/
+  gap: 2rem; /*expaçamento entre todos os elementos de 2rem = */
+}
+
+.section {
+  padding: 5rem 0; /*Poderia modificar cima e baixo com margem ou padding. Nesse caso é 5rem que significa 80/16 = 5*/
+}
