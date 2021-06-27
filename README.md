@@ -1,4 +1,4 @@
 # OriginSix-NLW
  __
  
- Projeto Next level week da Rocketseat! Projeto Completo. 
+ Projeto Front-end Next level week da Rocketseat! Projeto Completo. 
